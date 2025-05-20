@@ -1,0 +1,111 @@
+/* Fuente moderna y limpia */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0 20px;
+    background: linear-gradient(145deg, #0f2027, #203a43, #2c5364);
+    color: #f2f2f2;
+    min-height: 100vh;
+}
+
+
+.container {
+    background-color: #1e1e2f;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    width: 94%;
+    margin: 30px auto;
+}
+
+h1 {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #ffffff;
+}
+
+/* form {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+} */
+
+label {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+select, input[type="date"] {
+    padding: 10px 12px;
+    margin: 0 50px 0 0;
+    border-radius: 8px;
+    border: none;
+    background-color: #2e2e3e;
+    color: #ffffff;
+    font-size: 1rem;
+    outline: none;
+}
+
+select:focus, input[type="date"]:focus {
+    box-shadow: 0 0 5px #00bcd4;
+}
+
+button {
+    background: #00bcd4;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #0097a7;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }  
+
+img {
+    width: 100%;
+    max-height: 400px;
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+p {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 30px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+
+.plot-container {
+    max-width: 99vw;
+    margin: 40px auto;
+    padding: 0px;
+    text-align: center;
+}
+
+.plot-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    margin-top: 5px;
+}

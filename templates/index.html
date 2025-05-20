@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Red Neuronal Wavelets para eliminar ruido en Series de Tiempo Financieras</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Red Neuronal Wavelets para eliminar ruido en Series de Tiempo Financieras</h1>
+        <form method="post">
+            <label for="ticker">Ticker:</label>
+            <select name="ticker" required>
+                <option value="">-- Selecciona un activo --</option>
+                <option value="BTC-USD" {{ 'selected' if request.form.get('ticker') == 'BTC-USD' else '' }}>Bitcoin (BTC)</option>
+                <option value="ETH-USD" {{ 'selected' if request.form.get('ticker') == 'ETH-USD' else '' }}>Ethereum (ETH)</option>
+                <option value="BNB-USD" {{ 'selected' if request.form.get('ticker') == 'BNB-USD' else '' }}>Binance Coin (BNB)</option>
+                <option value="SOL-USD" {{ 'selected' if request.form.get('ticker') == 'SOL-USD' else '' }}>Solana (SOL)</option>
+                <option value="ADA-USD" {{ 'selected' if request.form.get('ticker') == 'ADA-USD' else '' }}>Cardano (ADA)</option>
+                <option value="DOGE-USD" {{ 'selected' if request.form.get('ticker') == 'DOGE-USD' else '' }}>Dogecoin (DOGE)</option>
+                <option value="XRP-USD" {{ 'selected' if request.form.get('ticker') == 'XRP-USD' else '' }}>Ripple (XRP)</option>
+                <option value="DOT-USD" {{ 'selected' if request.form.get('ticker') == 'DOT-USD' else '' }}>Polkadot (DOT)</option>
+                <option value="MATIC-USD" {{ 'selected' if request.form.get('ticker') == 'MATIC-USD' else '' }}>Polygon (MATIC)</option>
+                <option value="LTC-USD" {{ 'selected' if request.form.get('ticker') == 'LTC-USD' else '' }}>Litecoin (LTC)</option>
+            
+                <option value="AAPL" {{ 'selected' if request.form.get('ticker') == 'AAPL' else '' }}>Apple (AAPL)</option>
+                <option value="MSFT" {{ 'selected' if request.form.get('ticker') == 'MSFT' else '' }}>Microsoft (MSFT)</option>
+                <option value="GOOGL" {{ 'selected' if request.form.get('ticker') == 'GOOGL' else '' }}>Alphabet (GOOGL)</option>
+                <option value="AMZN" {{ 'selected' if request.form.get('ticker') == 'AMZN' else '' }}>Amazon (AMZN)</option>
+                <option value="META" {{ 'selected' if request.form.get('ticker') == 'META' else '' }}>Meta (META)</option>
+                <option value="NVDA" {{ 'selected' if request.form.get('ticker') == 'NVDA' else '' }}>NVIDIA (NVDA)</option>
+                <option value="TSLA" {{ 'selected' if request.form.get('ticker') == 'TSLA' else '' }}>Tesla (TSLA)</option>
+                <option value="NFLX" {{ 'selected' if request.form.get('ticker') == 'NFLX' else '' }}>Netflix (NFLX)</option>
+                <option value="INTC" {{ 'selected' if request.form.get('ticker') == 'INTC' else '' }}>Intel (INTC)</option>
+            
+                <option value="SPY" {{ 'selected' if request.form.get('ticker') == 'SPY' else '' }}>S&P 500 ETF (SPY)</option>
+                <option value="QQQ" {{ 'selected' if request.form.get('ticker') == 'QQQ' else '' }}>NASDAQ 100 ETF (QQQ)</option>
+                <option value="DIA" {{ 'selected' if request.form.get('ticker') == 'DIA' else '' }}>Dow Jones ETF (DIA)</option>
+                <option value="VTI" {{ 'selected' if request.form.get('ticker') == 'VTI' else '' }}>Vanguard Total Market (VTI)</option>
+                <option value="ARKK" {{ 'selected' if request.form.get('ticker') == 'ARKK' else '' }}>ARK Innovation ETF (ARKK)</option>
+                <option value="TLT" {{ 'selected' if request.form.get('ticker') == 'TLT' else '' }}>20+ Year Treasury Bond ETF (TLT)</option>
+                <option value="GLD" {{ 'selected' if request.form.get('ticker') == 'GLD' else '' }}>Oro (GLD)</option>
+                <option value="SLV" {{ 'selected' if request.form.get('ticker') == 'SLV' else '' }}>Plata (SLV)</option>
+                <option value="USO" {{ 'selected' if request.form.get('ticker') == 'USO' else '' }}>Petróleo (USO)</option>
+                <option value="XLF" {{ 'selected' if request.form.get('ticker') == 'XLF' else '' }}>Financial Sector ETF (XLF)</option>
+            </select>
+            
+        
+            <label for="start_date">Fecha inicio:</label>
+            <input type="date" name="start_date" 
+                value="{{ request.form.get('start_date', default_start) }}" required>
+
+            <label for="end_date">Fecha fin:</label>
+            <input type="date" name="end_date" 
+                value="{{ request.form.get('end_date', default_end) }}" required>
+
+            <button type="submit">Procesar</button>
+        </form>
+        
+
+        {% if error %}
+            <p style="color:red">{{ error }}</p>
+        {% endif %}
+    </div>
+
+    {% if plot_url %}
+        <div class="plot-container">
+            <img src="data:image/png;base64,{{ plot_url }}" alt="Gráfico generado">
+        </div>
+    {% endif %}
+</body>
+</html>
